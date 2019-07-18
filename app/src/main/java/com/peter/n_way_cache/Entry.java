@@ -1,6 +1,5 @@
 package com.peter.n_way_cache;
 
-import java.sql.Timestamp;
 import java.util.Locale;
 
 public class Entry<K, V> {
@@ -8,36 +7,36 @@ public class Entry<K, V> {
     private final V value;
     private final int hash;
 
-    private Timestamp timestamp;
+    private long timestamp;
 
-    public Entry(K keyInput, V value, int hash) {
+    Entry(K keyInput, V value, int hash) {
         this(keyInput, value, Utility.currentTimestamp(), hash);
     }
 
-    private Entry(K key, V value, Timestamp timestamp, int hash) {
+    private Entry(K key, V value, long timestamp, int hash) {
     	this.key = key;
         this.value = value;
         this.timestamp = timestamp;
         this.hash = hash;
     }
 
-    public K getKey() {
+    K getKey() {
         return key;
     }
 
-    public V getValue() {
+    V getValue() {
         return value;
     }
 
-    public int getHash() {
+    int getHash() {
         return hash;
     }
 
-    public Timestamp getTimestamp() {
+    long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
+    void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
     

@@ -3,13 +3,11 @@ package com.peter.n_way_cache;
 import com.peter.n_way_cache.interfaces.Cache;
 import com.peter.n_way_cache.interfaces.Policy;
 
-import java.sql.Timestamp;
-
 public class Utility {
     static final String FORMAT_TO_STRING = "Key:%s, Value:%s, Tag:%d, Timestamp:%s";
 
     private static final String NULL_STR = "null";
-    private static long timeMillis = 0;
+    private static long timeStamp = 0;
 
     public static <K, V> Cache<K, V> newCache(int associativity, int numSets, Policy<K, V> evictionPolicy) {
         return new NWayCache<>(associativity, numSets, evictionPolicy);
@@ -33,8 +31,8 @@ public class Utility {
         return key1.equals(key2);
     }
     
-    synchronized static Timestamp currentTimestamp() {
-        return new Timestamp(timeMillis++);
+    synchronized static long currentTimestamp() {
+        return timeStamp++;
     }
 
     static String objString(Object obj) {
